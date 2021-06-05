@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="css/style.min.css"><title>Nërds каталог сайтов</title></head><body><header class="header"><div class="container"><div class="header__top-side"><a href="index.html"><img src="icons/nerds-logo.svg" alt="Nerds" class="header__logo"></a><ul class="header__menu"><li class="header__item"><a href="index.html" class="header__link">Студия</a></li><li class="header__item"><a href="#" class="header__link">Клиенты</a></li><li class="header__item header__item_active"><a href="catalog.html" class="header__link">Магазин</a></li><li class="header__item"><a href="#" class="header__link">Контакты</a></li></ul><div class="header__item header__item_cart"><a href="#" class="header__link header__link_cart">Корзина</a></div></div><h1 class="header__title">Магазин готовых шаблонов</h1></div></header><div class="catalog"><div class="container"><form action="filter" class="catalog__filter"><fieldset class="catalog__filter-cost"><legend class="catalog__filter-title catalog__filter-title_cost">СТОИМОСТЬ:</legend><div class="catalog__filter-slider"><div id="slider-range"></div></div><p class="catalog__filter-numbers"><label for="amount-form">ОТ</label> <input type="text" id="amount-from" class="catalog__filter-numbers-input"> <label for="amount-to">ДО</label> <input type="text" id="amount-to" class="catalog__filter-numbers-input"></p></fieldset><fieldset class="catalog__filter-layout"><legend class="catalog__filter-title">Сетка:</legend><input class="catalog__custom-radio catalog__custom-radio_adaptive" name="layout" id="adaptive" type="radio"> <label for="adaptive" class="catalog__filter-options catalog__filter-layout-text">Адаптивная</label> <input class="catalog__custom-radio catalog__custom-radio_static" name="layout" id="static" type="radio"> <label for="static" class="catalog__filter-options catalog__filter-layout-text">Фиксированная</label> <input class="catalog__custom-radio catalog__custom-radio_liquid" name="layout" id="liquid" type="radio"> <label for="liquid" class="catalog__filter-options catalog__filter-layout-text">Резиновая</label></fieldset><fieldset class="catalog__filter-adds"><legend class="catalog__filter-title">ОСОБЕННОСТИ:</legend><input type="checkbox" name="adds" id="carousel" class="catalog__custom-checkbox"> <label for="carousel" class="catalog__filter-options catalog__filter-adds-text">Слайдер</label> <input type="checkbox" name="adds" id="advantages" class="catalog__custom-checkbox"> <label for="advantages" class="catalog__filter-options catalog__filter-adds-text">Блок преимуществ</label> <input type="checkbox" name="adds" id="news" class="catalog__custom-checkbox"> <label for="news" class="catalog__filter-options catalog__filter-adds-text">Новости</label> <input type="checkbox" name="adds" id="gallery" class="catalog__custom-checkbox"> <label for="gallery" class="catalog__filter-options catalog__filter-adds-text">Галерея</label> <input type="checkbox" name="adds" id="cart" class="catalog__custom-checkbox"> <label for="cart" class="catalog__filter-options catalog__filter-adds-text">Корзина</label></fieldset><input type="submit" class="btn_filter" value="ПОКАЗАТЬ"></form><div class="catalog__wrap-main"><div class="catalog__sorting"><p class="catalog__sorting-title">СОРТИРОВАТЬ:</p><div class="catalog__sorting-wrap"><p class="catalog__sorting-cost catalog__sorting-item catalog__sorting-item_active">По цене</p><p class="catalog__sorting-type catalog__sorting-item">По типу</p><p class="catalog__sorting-name catalog__sorting-item">По названию</p><span class="catalog__sorting-down catalog__sorting-down-up_active">&#9650;</span> <span class="catalog__sorting-up">&#9650;</span></div></div><div class="catalog__list"><!-- <div class="catalog__item carousel advantages gallery">
+						<img class="catalog__img" src="" alt="">
+	
+						<div class="catalog__wrap">
+							<div class="catalog__window">
+								<div class="catalog__round"></div>
+							</div>
+							<div class="catalog__buy-now">
+								<div class="catalog__item-name"></div>
+								<div class="catalog__item-subtitle"></div>
+								<button class="btn btn_buy">
+									<span class="price"></span>
+									<span class="currency"> руб.</span>
+								</button>
+							</div>
+						</div>
+					</div>
+	
+					<div class="catalog__item carousel gallery cart">
+						<img class="catalog__img" src="" alt="">
+						<div class="catalog__wrap">
+							<div class="catalog__window">
+								<div class="catalog__round"></div>
+							</div>
+							<div class="catalog__buy-now">
+								<div class="catalog__item-name"></div>
+								<div class="catalog__item-subtitle"></div>
+								<button class="btn btn_buy">
+									<span class="price"></span>
+									<span class="currency"> руб.</span>
+								</button>
+							</div>
+						</div>
+					</div>
+	
+					<div class="catalog__item advantages news gallery">
+						<img class="catalog__img" src="" alt="">
+						<div class="catalog__wrap">
+							<div class="catalog__window">
+								<div class="catalog__round"></div>
+							</div>
+							<div class="catalog__buy-now">
+								<div class="catalog__item-name"></div>
+								<div class="catalog__item-subtitle"></div>
+								<button class="btn btn_buy">
+									<span class="price"></span>
+									<span class="currency"> руб.</span>
+								</button>
+							</div>
+						</div>
+					</div>
+	
+					<div class="catalog__item advantages news gallery">
+						<img class="catalog__img" src="" alt="">
+						<div class="catalog__wrap">
+							<div class="catalog__window">
+								<div class="catalog__round"></div>
+							</div>
+							<div class="catalog__buy-now">
+								<div class="catalog__item-name"></div>
+								<div class="catalog__item-subtitle"></div>
+								<button class="btn btn_buy">
+									<span class="price"></span>
+									<span class="currency"> руб.</span>
+								</button>
+							</div>
+						</div>
+					</div>
+	
+					<div class="catalog__item carousel advantages gallery">
+						<img class="catalog__img" src="" alt="">
+						<div class="catalog__wrap">
+							<div class="catalog__window">
+								<div class="catalog__round"></div>
+							</div>
+							<div class="catalog__buy-now">
+								<div class="catalog__item-name"></div>
+								<div class="catalog__item-subtitle"></div>
+								<button class="btn btn_buy">
+									<span class="price"></span>
+									<span class="currency"> руб.</span>
+								</button>
+							</div>
+						</div>
+					</div>
+	
+					<div class="catalog__item advantages carousel cart">
+						<img class="catalog__img" src="" alt="">
+						<div class="catalog__wrap">
+							<div class="catalog__window">
+								<div class="catalog__round"></div>
+							</div>
+							<div class="catalog__buy-now">
+								<div class="catalog__item-name"></div>
+								<div class="catalog__item-subtitle"></div>
+								<button class="btn btn_buy">
+									<span class="price"></span>
+									<span class="currency"> руб.</span>
+								</button>
+							</div>
+						</div>
+					</div> --></div><div class="catalog__nav"><button class="btn_nav-small btn_nav-active">1</button> <button class="btn_nav-small">2</button> <button class="btn_nav-small">3</button> <button class="btn_nav-large">следующая</button></div></div></div></div><footer class="footer"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1998.6037872533277!2d30.320858716096975!3d59.93871648187614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310fca145cc1%3A0x42b32648d8238007!2z0JHQvtC70YzRiNCw0Y8g0JrQvtC90Y7RiNC10L3QvdCw0Y8g0YPQuy4sIDE5LzgsINCh0LDQvdC60YIt0J_QtdGC0LXRgNCx0YPRgNCzLCDQoNC-0YHRgdC40Y8sIDE5MTE4Ng!5e0!3m2!1sru!2spl!4v1584994251756!5m2!1sru!2spl" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe><div class="container"><div class="footer__contacts"><div class="footer__card"><h2 class="footer__company-name">NЁRDS DESIGN STUDIO</h2><address class="footer__adr footer__contact-info">191186, Санкт-Петербург,<br>ул. Б. Конюшенная, д. 19/8</address><a href="tel:+78122757575" class="footer__phone footer__contact-info">тел. +7 (812) 275-75-75</a> <button data-modal="feedback" class="btn btn__medium btn_red">Напишите нам</button></div></div><div class="footer__social"><ul class="footer__link-list"><li class="footer__link-item"><a href="#" class="footer__link footer__link_vk"><img src="icons/footer/vk-icon.png" alt="Vkontakte" class="footer__img"></a></li><li class="footer__link-item"><a href="#" class="footer__link footer__link_fb"><img src="icons/footer/fb-icon.png" alt="Facebook" class="footer__img"></a></li><li class="footer__link-item"><a href="#" class="footer__link footer__link_insta"><img src="icons/footer/insta-icon.png" alt="Instagram" class="footer__img"></a></li></ul><div class="footer__text"><div class="footer__title">Давайте дружить, это выгодно!</div><div class="footer__subtitle">Скидка 10% для друзей из социальных сетей.</div></div></div></div></footer><div class="overlay"><div class="modal" id="feedback"><div class="modal__close">&times;</div><div class="modal__title">Напишите нам</div><form class="modal__form" action="#"><div class="modal__wrap"><p class="modal__subtitle modal__subtitle_name">Ваше имя:</p><input class="modal__input modal__input_name" name="name" placeholder="Имя Фамилия" type="text"></div><div class="modal__wrap"><p class="modal__subtitle modal__subtitle_email">Ваш e-mail:</p><input class="modal__input modal__input_email" name="email" placeholder="email@example.com" type="email"></div><p class="modal__subtitle">Текст письма:</p><textarea class="modal__input modal__input_message" name="text" placeholder="В свободной форме" resize="none"></textarea> <button class="btn btn_red btn_submit">ОТПРАВИТЬ</button></form></div></div><script src="https://code.jquery.com/jquery-1.12.4.js"></script><script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script><script src="js/catalog_script.js"></script><script src="js/filter.js"></script></body></html>

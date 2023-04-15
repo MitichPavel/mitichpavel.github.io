@@ -39,5 +39,22 @@
             </div>
         </div>
     </form>
+    <p id="date_input_value"></p>
+    <script>
+        window.addEventListener("DOMContentLoaded", (event) => {
+            const formBirthday = document.querySelector('#birthday');
+            const inputDateBirthday = formBirthday.querySelector('input[type="date"]');
+            const date_input_value = document.querySelector('#date_input_value');
+            inputDateBirthday.addEventListener('input', (e) => {
+                const date = e.target.value;
+                let [year, month, day] = date.split('-');
+                year = +year;
+                month = +month;
+                day = +day;
+                date_input_value.innerText = year + '_' + month + '_' + day;
+            });
+            console.log("DOM fully loaded and parsed");
+        });
+    </script>
 </body>
 </html>

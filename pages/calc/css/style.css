@@ -21,7 +21,7 @@ body {
 }
 
 .result .row .number {
-    display: block:
+    display: block;
     width: 2em;
     height: 2em;
     margin: 0 1.2em;
@@ -32,5 +32,5 @@ body {
 }
 
 .result .row .number.transparent {
-    background-color: transparent:
+    background-color: transparent;
 }

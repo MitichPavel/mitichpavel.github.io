@@ -75,9 +75,7 @@
             inputDateBirthday.addEventListener('input', (e) => {
                 const date = e.target.value;
                 let [year, month, day] = date.split('-');
-                year = +year;
-                month = +month;
-                day = +day;
+
                 const pos1 = get_arkan(day);
                 const pos2 = get_arkan(month);
                 const pos3 = get_arkan(pos1 + pos2);

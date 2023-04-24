@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/style.css">
-	<title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title></title>
 </head>
+
 <body>
     <form id="birthday" class="form">
         <div class="c-input">
@@ -45,24 +47,35 @@
             const formBirthday = document.querySelector('#birthday');
             const inputDateBirthday = formBirthday.querySelector('input[type="date"]');
             const date_input_value = document.querySelector('#date_input_value');
-            const n1 = document.querySelector('#n1');
-            const n2 = document.querySelector('#n2');
-            const n3 = document.querySelector('#n3');
-            const n4 = document.querySelector('#n4');
-            const n5 = document.querySelector('#n5');
-            const n6 = document.querySelector('#n6');
-            const n7 = document.querySelector('#n7');
-            const n8 = document.querySelector('#n8');
-            const n9 = document.querySelector('#n9');
-            const n10 = document.querySelector('#n10');
-            const n11 = document.querySelector('#n11');
-            const n12 = document.querySelector('#n12');
+
+            function today_data() {
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : today.getMonth() + 1;
+                const day = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();
+                const date = `${year}-${month}-${day}`;
+                return date;
+            }
+
+            const n1 = formBirthday.querySelector('#n1');
+            const n2 = formBirthday.querySelector('#n2');
+            const n3 = formBirthday.querySelector('#n3');
+            const n4 = formBirthday.querySelector('#n4');
+            const n5 = formBirthday.querySelector('#n5');
+            const n6 = formBirthday.querySelector('#n6');
+            const n7 = formBirthday.querySelector('#n7');
+            const n8 = formBirthday.querySelector('#n8');
+            const n9 = formBirthday.querySelector('#n9');
+            const n10 = formBirthday.querySelector('#n10');
+            const n11 = formBirthday.querySelector('#n11');
+            const n12 = formBirthday.querySelector('#n12');
+
             function get_arkan(count) {
                 const rounded = +count % 22;
                 if (rounded === 0) {
                     return 22;
                 }
-                
+
                 if (rounded < 0) {
                     return rounded + 22;
                 }
@@ -70,10 +83,10 @@
                 return rounded;
             }
             function sum_year(year) {
-            return year.split('').reduce((acc, number) => +acc + +number, 0)
+                return year.split('').reduce((acc, number) => +acc + +number, 0)
             }
-            inputDateBirthday.addEventListener('input', (e) => {
-                const date = e.target.value;
+
+            function set_date_to_result(date) {
                 let [year, month, day] = date.split('-');
 
                 const pos1 = get_arkan(day);
@@ -88,23 +101,31 @@
                 const pos10 = get_arkan(pos1 - pos2);
                 const pos11 = get_arkan(pos2 - pos4);
                 const pos12 = get_arkan(pos10 - pos11);
-                
-n1.innerText = pos1;
-n2.innerText = pos2;
-n3.innerText = pos3;
-n4.innerText = pos4;
-n5.innerText = pos5;
-n6.innerText = pos6;
-n7.innerText = pos7;
-n8.innerText = pos8;
-n9.innerText = pos9;
-n10.innerText = pos10;
-n11.innerText = pos11;
-n12.innerText = pos12;
-               // date_input_value.innerText = year + '_' + month + '_' + day;
+
+                n1.innerText = pos1;
+                n2.innerText = pos2;
+                n3.innerText = pos3;
+                n4.innerText = pos4;
+                n5.innerText = pos5;
+                n6.innerText = pos6;
+                n7.innerText = pos7;
+                n8.innerText = pos8;
+                n9.innerText = pos9;
+                n10.innerText = pos10;
+                n11.innerText = pos11;
+                n12.innerText = pos12;
+                // date_input_value.innerText = year + '_' + month + '_' + day;
+            }
+
+            const today = today_data();
+            inputDateBirthday.value = today;
+            set_date_to_result(today);
+            inputDateBirthday.addEventListener('input', (e) => {
+                set_date_to_result(e.target.value);
             });
             // console.log("DOM fully loaded and parsed");
         });
     </script>
 </body>
+
 </html>

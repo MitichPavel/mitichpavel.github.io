@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 body {
     margin: 0;
     padding: 0;
@@ -39,25 +40,29 @@ body * {
     text-align: center;
 }
 
+.result .row.row-2 {
+    margin: .25em .75em .5em;
+}
+
 .result .row.row-2:before {
     position: absolute;
-    bottom: -1px;
-    right: 4em;
+    bottom: -.35em;
+    right: 2.75em;
     content: '';
     height: 2px;
-    width: calc((100% / 7) * 4.5);
+    width: calc((100% / 7) * 5.25);
     background-color: #000;
-    transform: rotate(-60deg);
+    transform: rotate(-57deg);
     transform-origin: right top;
 }
 
 .result .row.row-2:after {
     position: absolute;
-    bottom: -1px;
-    left: 1em;
+    bottom: -.35em;
+    left: .25em;
     content: '';
     height: 2px;
-    width: calc((100% / 7) * 4.75);
+    width: calc((100% / 7) * 5.5);
     background-color: #000;
 }
 

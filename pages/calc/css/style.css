@@ -1,6 +1,11 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body * {
+    font-family: 'Roboto', sans-serif;
 }
 
 .result {
@@ -18,17 +23,42 @@ body {
 .result .row {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .result .row .number {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 2em;
     height: 2em;
-    margin: 0 1.2em;
-    background-color: lightgrey;
+    margin: .25em .75em;
+/*     background-color: lightgrey; */
     border-radius: 6px;
     line-height: 1;
     text-align: center;
+}
+
+.result .row.row-2:before {
+    position: absolute;
+    bottom: -1px;
+    right: 4em;
+    content: '';
+    height: 2px;
+    width: calc((100% / 7) * 4.5);
+    background-color: #000;
+    transform: rotate(-60deg);
+    transform-origin: right top;
+}
+
+.result .row.row-2:after {
+    position: absolute;
+    bottom: -1px;
+    left: 1em;
+    content: '';
+    height: 2px;
+    width: calc((100% / 7) * 4.75);
+    background-color: #000;
 }
 
 .result .row .number.transparent {

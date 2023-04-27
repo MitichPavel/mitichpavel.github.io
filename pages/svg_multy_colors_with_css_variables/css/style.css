@@ -1,0 +1,22 @@
+.cnt-svg {
+  difplay: flex;
+  juastify-content: center;
+  alight-items: center;
+}
+.cnt-svg svg {
+  --c_svg_1: #F5F0FF;
+  --c_svg_0: #4924B2;
+}
+
+#flex-duo-icon-copy {
+  width: 84px;
+  height: 84px;
+}
+
+#flex-duo-icon-copy .st1 {
+  fill: lightgrey var(--c_svg_1, lightgrey);
+}
+
+#flex-duo-icon-copy .st1 {
+  fill: red var(--c_svg_0, red);
+}

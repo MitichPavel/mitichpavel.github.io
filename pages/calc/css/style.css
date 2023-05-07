@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    background: mintcream;
 }
 
 body * {
@@ -55,10 +56,28 @@ form .c-input {
     width: 2em;
     height: 2em;
     margin: .25em .75em;
-/*     background-color: lightgrey; */
     border-radius: 6px;
     line-height: 1;
     text-align: center;
+}
+
+.result .row .number.blue-upderline {
+    color: blue;
+    font-weight: 500;
+    text-underline-position: under;
+    text-decoration: underline;
+}
+
+.result .row .number.red-arrow {
+    font-weight: 500;
+    color: red;
+}
+
+.result .row .number.red-arrow:after {
+    content: '↓';
+    color: inherit;
+    font-size: 1.4em;
+    transform: translateY(-0.1em);
 }
 
 .result .row.row-2 {

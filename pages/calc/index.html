@@ -184,33 +184,59 @@
             }
 
             function set_date_to_result(positions, form) {
-                const [pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12] = positions;
+                const posElements = positions.map((pos, i) => {
+                    const posEl = form.querySelector(`#n${i + 1}`);
+                    posEl.innerText = pos;
+                    return posEl;
+                });
 
-                const n1 = form.querySelector('#n1');
-                const n2 = form.querySelector('#n2');
-                const n3 = form.querySelector('#n3');
-                const n4 = form.querySelector('#n4');
-                const n5 = form.querySelector('#n5');
-                const n6 = form.querySelector('#n6');
-                const n7 = form.querySelector('#n7');
-                const n8 = form.querySelector('#n8');
-                const n9 = form.querySelector('#n9');
-                const n10 = form.querySelector('#n10');
-                const n11 = form.querySelector('#n11');
-                const n12 = form.querySelector('#n12');
 
-                n1.innerText = pos1;
-                n2.innerText = pos2;
-                n3.innerText = pos3;
-                n4.innerText = pos4;
-                n5.innerText = pos5;
-                n6.innerText = pos6;
-                n7.innerText = pos7;
-                n8.innerText = pos8;
-                n9.innerText = pos9;
-                n10.innerText = pos10;
-                n11.innerText = pos11;
-                n12.innerText = pos12;
+                const [ pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12 ] = posElements;
+                const [ p1, p2, p3, p4, p5, p6] = positions;
+                
+                const blue_expresions = [
+                    [1,4],
+                    [3,5],
+                    [2,6],
+                    [1,2,4],
+                    [1,2,3],
+                    [2,3,5],
+                    [2,4,5],
+                    [3,5,6],
+                    [1,3,6],
+                    [4,5,6],
+                ];
+
+                const red_expresions = [
+                    [1,2],
+                    [1,3],
+                    [1,5],
+                    [1,6],
+                    [2,3],
+                    [2,4],
+                    [2,5],
+                    [3,4],
+                    [3,6],
+                    [4,5],
+                    [4,6],
+                    [5,6],
+                ];
+
+                blue_expresions.forEach((expresion) => {
+                    const values = expresion.map((index) => positions[index - 1])
+                    if (new Set(values).size === 1) {
+                        expresion.forEach((pos) => posElements[pos - 1].classList.add('blue-upderline'));
+                    }
+                });
+
+                red_expresions.forEach((expresion) => {
+                    const values = expresion.map((index) => positions[index - 1])
+                    if (new Set(values).size === 1) {
+                        expresion.forEach((pos) => posElements[pos - 1].classList.add('red-arrow'));
+                    }
+                });
+                // if (form.id === 'third_date') {
+                // }
             }
 
             function get_arkan(count) {

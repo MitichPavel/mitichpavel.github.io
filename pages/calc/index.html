@@ -254,17 +254,18 @@
             forms.forEach((form, i) => {
                 const inputDate = form.querySelector('input[type="date"]');
                 const date_input_value = form.querySelector('#date_input_value');
-                
-                const today = today_data();
-                inputDate.value = today;
-                const [year, month, day] = today.split('-');
+                const _last_date_ = localStorage.getItem(`_last_date_${i}`) ?? today_data();
+
+                inputDate.value = _last_date_;
+                const [year, month, day] = _last_date_.split('-');
                 const positions = calc_positions({ year, month, day });
                 set_date_to_result(positions, form);
+
                 inputDate.addEventListener('input', (e) => {
-                    // set_date_to_result(e.target.value, form);
-                    
                     const first_date_value = forms[0].querySelector('input[type="date"]').value;
                     const second_date_value = forms[1].querySelector('input[type="date"]').value;
+
+                    localStorage.setItem(`_last_date_${i}`, e.target.value);
                     
                     calc_and_set(first_date_value, second_date_value);
                 });

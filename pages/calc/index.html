@@ -44,7 +44,9 @@
         </form>
         <form id="second_date" class="form form-date-input">
             <div class="c-input">
+                <button type="button" class="prev">Prev</button>
                 <input type="date" class="input"></input>
+                <button type="button" class="next">Next</button>
             </div>
             <div class="result">
                 <div class="row">
@@ -162,10 +164,9 @@
             </div>
         </form>
     </section>
-    <p id="date_input_value"></p>
+
     <script>
         window.addEventListener("DOMContentLoaded", (event) => {
-            // alert('new notification');
             function calc_positions({ year, month, day }) {
                 const pos1 = get_arkan(day);
                 const pos2 = get_arkan(month);
@@ -190,9 +191,10 @@
                     return posEl;
                 });
 
-
-                const [ pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9, pos10, pos11, pos12 ] = posElements;
-                const [ p1, p2, p3, p4, p5, p6] = positions;
+                posElements.forEach((posEl) => {
+                    posEl.classList.remove('blue-upderline');
+                    posEl.classList.remove('red-arrow');
+                });
                 
                 const blue_expresions = [
                     [1,4],
@@ -222,21 +224,27 @@
                     [5,6],
                 ];
 
-                blue_expresions.forEach((expresion) => {
-                    const values = expresion.map((index) => positions[index - 1])
-                    if (new Set(values).size === 1) {
-                        expresion.forEach((pos) => posElements[pos - 1].classList.add('blue-upderline'));
-                    }
-                });
-
                 red_expresions.forEach((expresion) => {
-                    const values = expresion.map((index) => positions[index - 1])
+                    const values = expresion.map((index) => positions[index - 1]);
+                    
+                    // check if all values are equal
                     if (new Set(values).size === 1) {
                         expresion.forEach((pos) => posElements[pos - 1].classList.add('red-arrow'));
                     }
                 });
-                // if (form.id === 'third_date') {
-                // }
+
+                blue_expresions.forEach((expresion) => {
+                    const values = expresion.map((index) => positions[index - 1]);
+
+                    // check if all values are equal
+                    if (new Set(values).size === 1) {
+                        expresion.forEach((pos) => {
+                            const el = posElements[pos - 1];
+                            el.classList.remove('red-arrow');
+                            el.classList.add('blue-upderline');
+                        });
+                    }
+                });
             }
 
             function get_arkan(count) {
@@ -270,7 +278,6 @@
             const forms = document.querySelectorAll('.form-date-input');
             
             function merge_triangle(tr1, tr2) {
-                console.log(tr1[3], tr2[3]);
                 const year = get_arkan(+tr1[3] + +tr2[3]);
                 const month = get_arkan(+tr1[1] + +tr2[1]);
                 const day = get_arkan(+tr1[0] + +tr2[0]);
@@ -279,7 +286,6 @@
 
             forms.forEach((form, i) => {
                 const inputDate = form.querySelector('input[type="date"]');
-                const date_input_value = form.querySelector('#date_input_value');
                 const _last_date_ = localStorage.getItem(`_last_date_${i}`) ?? today_data();
 
                 inputDate.value = _last_date_;
@@ -300,39 +306,39 @@
             function calc_and_set(first_date_value, second_date_value) {
                 let [year, month, day] = first_date_value.split('-');
                 let [sec_year, sec_month, sec_day] = second_date_value.split('-');
-                const first = calc_positions({ year, month, day });
-                const second = calc_positions({ year: sec_year, month: sec_month, day: sec_day });
-                const third = calc_positions(merge_triangle(first, second));
-                const fourth = calc_positions(merge_triangle(first, third));
-                const fifth = calc_positions(merge_triangle(second, third));
+                const positions_list = [];
+                positions_list.push(calc_positions({ year, month, day }));
+                positions_list.push(calc_positions({ year: sec_year, month: sec_month, day: sec_day }));
+                positions_list.push(calc_positions(merge_triangle(positions_list[0], positions_list[1])));
+                positions_list.push(calc_positions(merge_triangle(positions_list[0], positions_list[2])));
+                positions_list.push(calc_positions(merge_triangle(positions_list[1], positions_list[2])));
                 
-                console.log({ f: document.querySelectorAll('form') });
-                const [ form1, form2, form3, form4, form5 ] = document.querySelectorAll('form');
-                
-                set_date_to_result(first, form1);
-                set_date_to_result(second, form2);
-                set_date_to_result(third, form3);
-                set_date_to_result(fourth, form4);
-                set_date_to_result(fifth, form5);
+                const forms = document.querySelectorAll('form');
+                forms.forEach((form, i) => {
+                    set_date_to_result(positions_list[i], form);
+                });
             }
 
             const [ first_date, second_date ] = document.querySelectorAll('.section_1 input[type="date"]');
 
             calc_and_set(first_date.value, second_date.value);
-            // document.querySelectorAll('.section_2 form').forEach(form => {
-                //     document.querySelectorAll('.form-date-input input[type="date"]').forEach(input => {
-                    //         const inputDate = form.querySelector('input[type="date"]');
-                    //         input.addEventListener('input', (e) => {
-            //             set_date_to_result(e.target.value, form);
-            //         });
-            //     });
-            //     const first_date = today_data();
-            //     let [year, month, day] = first_date.split('-');
-            //     const pos1 = get_arkan(day);
-            //     const pos2 = get_arkan(month);
-            //     const pos4 = get_arkan(sum_year(year));
-            //     set_date_to_result(today, form);
-            // });
+
+            function init_date_navigation () {
+                const prevBtn = document.querySelector('button.prev');
+                const nextBtn = document.querySelector('button.next');
+
+                prevBtn.addEventListener('click', (e) => {
+                    const inputDate = e.target.nextElementSibling;
+                    inputDate.stepDown();
+                    inputDate.dispatchEvent(new Event('input'));
+                });
+                nextBtn.addEventListener('click', (e) => {
+                    const inputDate = e.target.previousElementSibling;
+                    inputDate.stepUp();
+                    inputDate.dispatchEvent(new Event('input'));
+                });
+            }
+            init_date_navigation();
         });
     </script>
 </body>
